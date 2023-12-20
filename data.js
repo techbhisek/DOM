@@ -64,7 +64,6 @@ function show() {
   document.getElementById('ul').innerHTML = '';
   document.getElementsByClassName('main')[0].style.display = 'none';
   let reset = document.getElementById('reset');
-  reset.onclick = 'newgene()';
   reset.innerText = 'new';
 
   const date = new Date();
@@ -78,17 +77,25 @@ function show() {
   DailyProgress();
   console.log(data);
 }
-
+let resetblock = 0;
 function reset() {
-  arr = [];
-  updateLocalStorage();
-  document.getElementById('ul').innerHTML = '';
+  if (resetblock == 0) {
+    arr = [];
+
+    updateLocalStorage();
+    document.getElementById('ul').innerHTML = '';
+    resetblock = 1;
+  } else {
+    document.getElementsByClassName('main')[0].style.display = 'flex';
+    document.getElementsByClassName('after')[0].style.display =
+      'none';
+    document.getElementById('reset');
+    reset.innerText = 'reset';
+
+    resetblock = 0;
+  }
 }
 
-function newgene() {
-  document.getElementsByClassName('main')[0].style.display = 'flex';
-  document.getElementsByClassName('after')[0].style.display = 'none';
-}
 let flag = 0;
 
 function daily() {
