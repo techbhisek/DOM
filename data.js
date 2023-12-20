@@ -112,8 +112,12 @@ function daily() {
       let progress = document.createElement('div');
       progress.className = 'progress';
       let textnode1 = document.createTextNode(
-        `${data[index].percentage}`
+        `${parseInt(data[index].percentage)}`
       );
+      if (data[index].percentage < 50) {
+        date.style.color = 'red';
+        progress.style.color = 'red';
+      }
       progress.appendChild(textnode1);
 
       history.appendChild(date);
