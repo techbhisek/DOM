@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <style>
+      body {
+        margin: 0px;
+      }
+      .parts {
+        display: flex;
+      }
+      .after {
+        width: 40vw;
+        height: 50vh;
+        border: 2px solid black;
+        margin-left: 30vw;
+        margin-top: 5vw;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(
+          95.2deg,
+          rgba(173, 252, 234, 1) 26.8%,
+          rgba(192, 229, 246, 1) 64%
+        );
+      }
+      header {
+        background-color: greenyellow;
+        color: black;
+        font-size: 30px;
+        width: 100vw;
+        height: 10vh;
+        padding-top: 2vw;
+        display: flex;
+        justify-content: space-between;
+      }
+      #daily {
+        margin: 0px;
+        margin-right: 100px;
+      }
+      .main {
+        width: 60vw;
+        height: 50vh;
+        border: 2px solid black;
+        margin: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      input {
+        margin-top: 50px;
+      }
+      .check {
+        margin: 0px;
+        width: 20px;
+        height: 20px;
+      }
+
+      ul {
+        text-align: center;
+        text-decoration: none;
+        overflow-y: scroll;
+        scrollbar-width: 0px;
+      }
+      ul::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+      .list {
+        list-style-type: none;
+        display: flex;
+        justify-content: space-between;
+        width: 40vw;
+        margin: 2px;
+        border: 2px solid black;
+        padding: 10px;
+        font-size: 25px;
+      }
+      button {
+        width: 200px;
+        height: 50px;
+        padding: 20px;
+        border: none;
+        margin: 50px 5vw;
+      }
+      .bottom {
+        display: flex;
+        margin-left: 400px;
+      }
+      .daily {
+        width: 90vw;
+        height: 80vh;
+        position: absolute;
+        top: 150px;
+        left: 50px;
+        background-color: aliceblue;
+        display: none;
+      }
+      .history {
+        width: 60vw;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .date {
+        width: 30vw;
+      }
+      .prgress {
+        width: 30vw;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      DAILY TARGETS
+      <button onclick="daily()" id="daily">daily</button>
+    </header>
+    <div class="parts">
+      <div class="main">
+        <div class="container">
+          <input type="text" name=" hello" id="done" />
+          <input
+            onclick="add()"
+            ondblclick=""
+            type="submit"
+            value="add"
+          />
+        </div>
+        <h3>To do List</h3>
+        <ul id="ul">
+          Ready for the day
+        </ul>
+      </div>
+      <div class="after">
+        <img src="./good.jpg" width="200px" height="200px" />
+        <h1>Great work man</h1>
+        <p>
+          you have achived the <span id="percent">0</span> %of
+          progress keep it up.Ready for next day.
+        </p>
+        <br /><br />
+        <progress id="file" value="0" max="100"></progress>
+      </div>
+    </div>
+    <div class="bottom">
+      <button onclick="show()">complete the day</button>
+      <button id="reset" onclick="reset()">Reset</button>
+    </div>
+    <div class="daily">
+      <h1>Date wise Progress IS</h1>
+      <div class="history"></div>
+    </div>
+    <script src="./data.js"></script>
+  </body>
+</html>
