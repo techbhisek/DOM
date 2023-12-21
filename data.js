@@ -1,5 +1,9 @@
 let arr = JSON.parse(localStorage.getItem('tasks')) || [];
 let data = JSON.parse(localStorage.getItem('dates')) || [];
+let checkmark = JSON.parse(localStorage.getItem('checks')) || [];
+function checkfun() {
+  localStorage.setItem('check', JSON.stringify(checkmark));
+}
 function updateLocalStorage() {
   localStorage.setItem('tasks', JSON.stringify(arr));
 }
@@ -17,9 +21,15 @@ function add() {
   let check = document.createElement('input');
   check.className = 'check';
   check.type = 'checkbox';
+  let button = document.createElement('button');
+  button.innerHTML = '-';
+  button.className = 'del';
+  let div = document.createElement('div');
 
   li.appendChild(textnode);
-  li.appendChild(check);
+  div.appendChild(check);
+  div.appendChild(button);
+  li.appendChild(div);
   ul.appendChild(li);
 
   arr.push(input.value);
@@ -37,9 +47,15 @@ function render() {
     let check = document.createElement('input');
     check.className = 'check';
     check.type = 'checkbox';
+    let button = document.createElement('button');
+    button.innerHTML = '-';
+    button.className = 'del';
+    let div = document.createElement('div');
 
     li.appendChild(textnode);
-    li.appendChild(check);
+    div.appendChild(check);
+    div.appendChild(button);
+    li.appendChild(div);
     ul.appendChild(li);
   });
 }
@@ -112,7 +128,7 @@ function daily() {
       let progress = document.createElement('div');
       progress.className = 'progress';
       let textnode1 = document.createTextNode(
-        `${parseInt(data[index].percentage)}`
+        `${parseInt(parseInt(data[index].percentage))}`
       );
       if (data[index].percentage < 50) {
         date.style.color = 'red';
@@ -131,3 +147,18 @@ function daily() {
     flag = 0;
   }
 }
+
+document.getElementById('ul').addEventListener('click', (event) => {
+  if (event.target.className == 'del') {
+    event.target.parentElement.parentElement.remove();
+    let target = event.target.parentElement.parentElement.innerText;
+    let bb = arr.filter((str) => {
+      if (str + '-' != target) {
+        return true;
+      }
+      return false;
+    });
+    arr = bb;
+    updateLocalStorage();
+  }
+});

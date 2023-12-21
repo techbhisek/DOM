@@ -11,7 +11,6 @@
   <style>
     body {
       margin: 0px;
-      background-color: black;
     }
     .container {
       position: relative;
@@ -22,45 +21,9 @@
       border: 2px solid black;
       flex-wrap: wrap;
       border: 5px solid transparent;
+      border: 1px solid black;
     }
 
-    .container::before {
-      content: '';
-      position: absolute;
-      left: -5px;
-      top: -5px;
-      background: linear-gradient(
-        45deg,
-        #e8f74d,
-        #ff6600d9,
-        #00ff66,
-        #13ff13,
-        #ad27ad,
-        #bd2681,
-        #6512b9,
-        #ff3300de,
-        #5aabde
-      );
-      background-size: 500%;
-      width: calc(100% + 10px);
-      height: calc(100% + 10px);
-      z-index: -1;
-      animation: glower 20s linear infinite;
-    }
-
-    @keyframes glower {
-      0% {
-        background-position: 0 0;
-      }
-
-      50% {
-        background-position: 400% 0;
-      }
-
-      100% {
-        background-position: 0 0;
-      }
-    }
     .black {
       width: 80px;
       height: 80px;
@@ -86,6 +49,7 @@
           let a = document.createElement('div');
           a.className = 'black';
           container.appendChild(a);
+
           flag = 1;
         } else {
           let a = document.createElement('div');

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+    <style>
+      #hello {
+        background-color: black;
+        width: 200px;
+        height: 20px;
+        position: absolute;
+        top: 80vh;
+        transition: transform() 0.6s;
+      }
+      #ball {
+        background-color: red;
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+        position: absolute;
+        animation: a 2s infinite;
+      }
+
+      @keyframes a {
+        0% {
+          top: 0px;
+          left: 0px;
+        }
+        50% {
+          top: 70vh;
+          left: 100px;
+        }
+        100% {
+          top: 0vh;
+          left: 0px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ball"></div>
+    <div id="hello"></div>
+    <script>
+      let a = document.getElementById('hello');
+      let x = 0,
+        y = 0;
+
+      document.addEventListener('keypress', (e) => {
+        if (e.key === 'a') {
+          x = x - 20;
+          a.style.left = x + 'px';
+        } else if (e.key === 'd') {
+          x = x + 20;
+          a.style.left = x + 'px';
+        } else {
+        }
+      });
+    </script>
+  </body>
+</html>
